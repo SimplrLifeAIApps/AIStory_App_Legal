@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konto löschen — [APP NAME]</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+
+  <div class="lang-switch">
+    <a href="../fr/suppression-compte.html">FR</a>
+    <a href="../de/konto-loeschen.html" class="active">DE</a>
+    <a href="../en/delete-account.html">EN</a>
+    <a href="../pt/eliminar-conta.html">PT</a>
+    <a href="../es/eliminar-cuenta.html">ES</a>
+  </div>
+
+  <h1>Ihr Konto löschen</h1>
+  <p class="meta">Gemäß Art. 17 DSGVO (Recht auf Löschung)</p>
+
+  <div class="box">
+    <p>Sie können die endgültige Löschung Ihres Kontos und aller zugehörigen Daten jederzeit auf zwei Wegen beantragen:</p>
+  </div>
+
+  <h2>Option 1 — Direkt in der App</h2>
+  <p>Öffnen Sie die App → <strong>Einstellungen</strong> → <strong>Konto</strong> → <strong>Konto löschen</strong>. Diese Methode ist sofort wirksam und erfordert kein Warten auf eine E-Mail.</p>
+
+  <h2>Option 2 — Über diese Seite (falls kein Zugriff mehr auf die App besteht)</h2>
+  <p>Geben Sie die mit Ihrem Konto verknüpfte E-Mail-Adresse ein. Sie erhalten einen Bestätigungslink, der 24 Stunden gültig ist.</p>
+
+  <div class="box">
+    <form id="delete-form">
+      <label for="email">E-Mail-Adresse Ihres Kontos:</label>
+      <input type="email" id="email" name="email" placeholder="ihre@email.com" required>
+      <input type="submit" value="Löschung beantragen">
+    </form>
+    <p style="font-size:13px; margin-top:12px;">
+      <span class="placeholder">[Technischer Hinweis: Dieses Formular muss mit dem Backend-Endpoint verbunden werden, der ein signiertes Token erstellt und die Bestätigungs-E-Mail über Supabase Auth versendet]</span>
+    </p>
+  </div>
+
+  <h2>Was passiert bei der Löschung?</h2>
+  <p>Nach Bestätigung werden folgende Daten endgültig gelöscht:</p>
+  <ul>
+    <li>Ihr Konto und Ihre Nutzer-ID</li>
+    <li>Alle generierten und gespeicherten Geschichten</li>
+    <li>Ihre Favoriten und narrativen Präferenzen</li>
+    <li>Ihre generierten Audiodateien</li>
+    <li>Ihre Abonnementinformationen (ein aktives Abonnement muss separat über Google Play / App Store gekündigt werden)</li>
+  </ul>
+
+  <div class="warning-box">
+    ⚠️ Diese Aktion ist <strong>unwiderruflich</strong>. Falls Sie ein aktives kostenpflichtiges Abonnement haben, denken Sie daran, dieses separat über Ihr Google Play- oder App-Store-Konto zu kündigen — die Kontolöschung beendet nicht automatisch die wiederkehrende Abrechnung beim Store.
+  </div>
+
+  <h2>Bearbeitungsdauer</h2>
+  <p>Die Löschung erfolgt unmittelbar nach Bestätigung des per E-Mail erhaltenen Links (oder sofort, wenn direkt in der App durchgeführt).</p>
+
+  <h2>Benötigen Sie Hilfe?</h2>
+  <p>Kontaktieren Sie uns unter <a href="mailto:simplrlifeai@gmail.com">simplrlifeai@gmail.com</a> bei Fragen.</p>
+
+  <div class="footer-nav">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutzerklaerung.html">Datenschutzerklärung</a>
+    <a href="../index.html">Startseite</a>
+  </div>
+
+</div>
+</body>
+</html>

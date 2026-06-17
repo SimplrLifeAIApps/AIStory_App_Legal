@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eliminar Conta — [NOME DA APLICAÇÃO]</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+
+  <div class="lang-switch">
+    <a href="../fr/suppression-compte.html">FR</a>
+    <a href="../de/konto-loeschen.html">DE</a>
+    <a href="../en/delete-account.html">EN</a>
+    <a href="../pt/eliminar-conta.html" class="active">PT</a>
+    <a href="../es/eliminar-cuenta.html">ES</a>
+  </div>
+
+  <h1>Eliminar a Sua Conta</h1>
+  <p class="meta">Nos termos do Artigo 17.º do RGPD (direito ao apagamento)</p>
+
+  <div class="box">
+    <p>Pode solicitar a eliminação definitiva da sua conta e de todos os dados associados em qualquer momento, de duas formas:</p>
+  </div>
+
+  <h2>Opção 1 — Diretamente na aplicação</h2>
+  <p>Abra a aplicação → <strong>Definições</strong> → <strong>Conta</strong> → <strong>Eliminar a minha conta</strong>. Este método é imediato e não requer esperar por um email.</p>
+
+  <h2>Opção 2 — Através desta página (caso já não tenha acesso à aplicação)</h2>
+  <p>Introduza o endereço de email associado à sua conta. Receberá um link de confirmação válido por 24 horas.</p>
+
+  <div class="box">
+    <form id="delete-form">
+      <label for="email">Endereço de email da sua conta:</label>
+      <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+      <input type="submit" value="Solicitar Eliminação">
+    </form>
+    <p style="font-size:13px; margin-top:12px;">
+      <span class="placeholder">[Nota técnica: este formulário deve ser ligado ao endpoint backend que gera um token assinado e envia o email de confirmação via Supabase Auth]</span>
+    </p>
+  </div>
+
+  <h2>O Que Acontece Quando Elimina a Conta?</h2>
+  <p>Após confirmação, os seguintes elementos são eliminados permanentemente:</p>
+  <ul>
+    <li>A sua conta e identificador de utilizador</li>
+    <li>Todas as histórias geradas e guardadas</li>
+    <li>Os seus favoritos e preferências narrativas</li>
+    <li>Os seus ficheiros áudio gerados</li>
+    <li>As suas informações de subscrição (uma subscrição ativa deve ser cancelada separadamente através do Google Play / App Store)</li>
+  </ul>
+
+  <div class="warning-box">
+    ⚠️ Esta ação é <strong>irreversível</strong>. Se tiver uma subscrição paga ativa, lembre-se de a cancelar separadamente através da sua conta Google Play ou App Store — a eliminação da conta não interrompe automaticamente a faturação recorrente do lado da loja.
+  </div>
+
+  <h2>Tempo de Processamento</h2>
+  <p>A eliminação tem efeito imediato após confirmação do link recebido por email (ou imediatamente, se realizada diretamente na aplicação).</p>
+
+  <h2>Precisa de Ajuda?</h2>
+  <p>Contacte-nos em <a href="mailto:simplrlifeai@gmail.com">simplrlifeai@gmail.com</a> para qualquer questão.</p>
+
+  <div class="footer-nav">
+    <a href="aviso-legal.html">Aviso Legal</a>
+    <a href="politica-privacidade.html">Política de Privacidade</a>
+    <a href="../index.html">Início</a>
+  </div>
+
+</div>
+</body>
+</html>

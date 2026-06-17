@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suppression de Compte — [NOM DE L'APPLICATION]</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+
+  <div class="lang-switch">
+    <a href="../fr/suppression-compte.html" class="active">FR</a>
+    <a href="../de/konto-loeschen.html">DE</a>
+    <a href="../en/delete-account.html">EN</a>
+    <a href="../pt/eliminar-conta.html">PT</a>
+    <a href="../es/eliminar-cuenta.html">ES</a>
+  </div>
+
+  <h1>Suppression de votre compte</h1>
+  <p class="meta">Conformément à l'article 17 du RGPD (droit à l'effacement)</p>
+
+  <div class="box">
+    <p>Vous pouvez demander la suppression définitive de votre compte et de toutes les données associées à tout moment, de deux façons :</p>
+  </div>
+
+  <h2>Option 1 — Directement dans l'application</h2>
+  <p>Ouvrez l'application → <strong>Paramètres</strong> → <strong>Compte</strong> → <strong>Supprimer mon compte</strong>. Cette méthode est immédiate et ne nécessite pas d'attendre un e-mail.</p>
+
+  <h2>Option 2 — Via cette page (si vous n'avez plus accès à l'application)</h2>
+  <p>Saisissez l'adresse e-mail associée à votre compte. Vous recevrez un lien de confirmation valable 24 heures.</p>
+
+  <div class="box">
+    <form id="delete-form">
+      <label for="email">Adresse e-mail de votre compte :</label>
+      <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+      <input type="submit" value="Demander la suppression">
+    </form>
+    <p style="font-size:13px; margin-top:12px;">
+      <span class="placeholder">[Note technique : ce formulaire doit être connecté à l'endpoint backend qui génère un token signé et envoie l'e-mail de confirmation via Supabase Auth — voir architecture définie avec l'équipe technique]</span>
+    </p>
+  </div>
+
+  <h2>Que se passe-t-il lors de la suppression ?</h2>
+  <p>Après confirmation, les éléments suivants sont définitivement supprimés :</p>
+  <ul>
+    <li>Votre compte et identifiant utilisateur</li>
+    <li>Toutes les histoires générées et sauvegardées</li>
+    <li>Vos favoris et préférences narratives</li>
+    <li>Vos fichiers audio générés</li>
+    <li>Vos informations d'abonnement (l'abonnement actif doit être annulé séparément via Google Play / App Store)</li>
+  </ul>
+
+  <div class="warning-box">
+    ⚠️ Cette action est <strong>irréversible</strong>. Si vous avez un abonnement payant actif, pensez à l'annuler séparément depuis votre compte Google Play ou App Store — la suppression du compte n'annule pas automatiquement la facturation récurrente côté store.
+  </div>
+
+  <h2>Délai de traitement</h2>
+  <p>La suppression est effective immédiatement après confirmation du lien reçu par e-mail (ou immédiatement si effectuée depuis l'application).</p>
+
+  <h2>Besoin d'aide ?</h2>
+  <p>Contactez-nous à <a href="mailto:simplrlifeai@gmail.com">simplrlifeai@gmail.com</a> pour toute question.</p>
+
+  <div class="footer-nav">
+    <a href="mentions-legales.html">Mentions Légales</a>
+    <a href="politique-confidentialite.html">Politique de Confidentialité</a>
+    <a href="../index.html">Accueil</a>
+  </div>
+
+</div>
+</body>
+</html>

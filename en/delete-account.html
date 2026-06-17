@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Account — [APP NAME]</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+
+  <div class="lang-switch">
+    <a href="../fr/suppression-compte.html">FR</a>
+    <a href="../de/konto-loeschen.html">DE</a>
+    <a href="../en/delete-account.html" class="active">EN</a>
+    <a href="../pt/eliminar-conta.html">PT</a>
+    <a href="../es/eliminar-cuenta.html">ES</a>
+  </div>
+
+  <h1>Delete Your Account</h1>
+  <p class="meta">In accordance with Article 17 GDPR (right to erasure)</p>
+
+  <div class="box">
+    <p>You can request permanent deletion of your account and all associated data at any time, in two ways:</p>
+  </div>
+
+  <h2>Option 1 — Directly in the app</h2>
+  <p>Open the app → <strong>Settings</strong> → <strong>Account</strong> → <strong>Delete my account</strong>. This method is immediate and does not require waiting for an email.</p>
+
+  <h2>Option 2 — Via this page (if you no longer have access to the app)</h2>
+  <p>Enter the email address associated with your account. You will receive a confirmation link valid for 24 hours.</p>
+
+  <div class="box">
+    <form id="delete-form">
+      <label for="email">Email address of your account:</label>
+      <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      <input type="submit" value="Request Deletion">
+    </form>
+    <p style="font-size:13px; margin-top:12px;">
+      <span class="placeholder">[Technical note: this form must be connected to the backend endpoint that generates a signed token and sends the confirmation email via Supabase Auth]</span>
+    </p>
+  </div>
+
+  <h2>What Happens When You Delete Your Account?</h2>
+  <p>After confirmation, the following are permanently deleted:</p>
+  <ul>
+    <li>Your account and user identifier</li>
+    <li>All generated and saved stories</li>
+    <li>Your favourites and narrative preferences</li>
+    <li>Your generated audio files</li>
+    <li>Your subscription information (an active subscription must be cancelled separately via Google Play / App Store)</li>
+  </ul>
+
+  <div class="warning-box">
+    ⚠️ This action is <strong>irreversible</strong>. If you have an active paid subscription, remember to cancel it separately through your Google Play or App Store account — account deletion does not automatically stop recurring billing on the store side.
+  </div>
+
+  <h2>Processing Time</h2>
+  <p>Deletion takes effect immediately after confirming the link received by email (or immediately if performed directly within the app).</p>
+
+  <h2>Need Help?</h2>
+  <p>Contact us at <a href="mailto:simplrlifeai@gmail.com">simplrlifeai@gmail.com</a> for any questions.</p>
+
+  <div class="footer-nav">
+    <a href="imprint.html">Imprint</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="../index.html">Home</a>
+  </div>
+
+</div>
+</body>
+</html>

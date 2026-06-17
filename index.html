@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[APP NAME] — Legal Information</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .lang-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .lang-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+  }
+  .lang-card:hover { border-color: var(--accent); }
+  .lang-card h3 { margin-top: 0; color: var(--text); }
+  .lang-card p { margin: 4px 0; font-size: 14px; }
+  .lang-card a.doclink { display: block; color: var(--accent); font-size: 14px; margin-top: 6px; }
+  .flag { font-size: 22px; margin-right: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>[APP NAME]</h1>
+  <p class="meta">Legal &amp; Privacy Information / Informations Légales / Rechtliche Informationen</p>
+
+  <div class="box">
+    <p>This site hosts the legal notices, privacy policies, and account deletion pages for the <span class="placeholder">[APP NAME]</span> application, provided by Philippe Benoist (France, SIREN 520 718 339). Select your language below.</p>
+  </div>
+
+  <div class="lang-grid">
+
+    <div class="lang-card">
+      <h3><span class="flag">🇫🇷</span>Français</h3>
+      <a class="doclink" href="fr/mentions-legales.html">Mentions Légales</a>
+      <a class="doclink" href="fr/politique-confidentialite.html">Politique de Confidentialité</a>
+      <a class="doclink" href="fr/suppression-compte.html">Suppression de Compte</a>
+    </div>
+
+    <div class="lang-card">
+      <h3><span class="flag">🇩🇪</span>Deutsch</h3>
+      <a class="doclink" href="de/impressum.html">Impressum</a>
+      <a class="doclink" href="de/datenschutzerklaerung.html">Datenschutzerklärung</a>
+      <a class="doclink" href="de/konto-loeschen.html">Konto löschen</a>
+    </div>
+
+    <div class="lang-card">
+      <h3><span class="flag">🇬🇧</span>English</h3>
+      <a class="doclink" href="en/imprint.html">Imprint</a>
+      <a class="doclink" href="en/privacy-policy.html">Privacy Policy</a>
+      <a class="doclink" href="en/terms-conditions.html">Terms &amp; Conditions</a>
+      <a class="doclink" href="en/delete-account.html">Delete Account</a>
+    </div>
+
+    <div class="lang-card">
+      <h3><span class="flag">🇵🇹</span>Português</h3>
+      <a class="doclink" href="pt/aviso-legal.html">Aviso Legal</a>
+      <a class="doclink" href="pt/politica-privacidade.html">Política de Privacidade</a>
+      <a class="doclink" href="pt/eliminar-conta.html">Eliminar Conta</a>
+    </div>
+
+    <div class="lang-card">
+      <h3><span class="flag">🇪🇸</span>Español</h3>
+      <a class="doclink" href="es/aviso-legal.html">Aviso Legal</a>
+      <a class="doclink" href="es/politica-privacidad.html">Política de Privacidad</a>
+      <a class="doclink" href="es/eliminar-cuenta.html">Eliminar Cuenta</a>
+    </div>
+
+  </div>
+
+  <div class="footer-nav">
+    <span style="color:var(--text-dim)">Contact: <a href="mailto:simplrlifeai@gmail.com">simplrlifeai@gmail.com</a></span>
+  </div>
+
+</div>
+</body>
+</html>
