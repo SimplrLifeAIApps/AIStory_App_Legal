@@ -3,8 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suppression de Compte — [NOM DE L'APPLICATION]</title>
-<link rel="stylesheet" href="../style.css">
+<title>Supprimer un compte — Alinara</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .container { background: white; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width: 600px; width: 100%; padding: 40px; }
+  h1 { color: #333; margin-bottom: 10px; font-size: 28px; }
+  .meta { color: #999; font-size: 14px; margin-bottom: 20px; }
+  .box { background: #f5f5f5; border-left: 4px solid #667eea; padding: 15px; margin: 20px 0; border-radius: 4px; }
+  h2 { color: #333; font-size: 18px; margin: 20px 0 10px 0; }
+  p { color: #555; line-height: 1.6; margin-bottom: 12px; }
+  ul { color: #555; margin: 10px 0 10px 20px; }
+  ul li { margin-bottom: 8px; }
+  form { display: flex; flex-direction: column; }
+  label { color: #333; font-weight: 600; margin-bottom: 8px; }
+  input[type="email"] { padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; margin-bottom: 15px; transition: border-color 0.3s; }
+  input[type="email"]:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+  button[type="submit"] { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 20px; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+  button[type="submit"]:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3); }
+  button[type="submit"]:disabled { opacity: 0.7; cursor: not-allowed; }
+  #status-message { margin-top: 15px; padding: 12px; border-radius: 4px; font-size: 14px; line-height: 1.5; }
+  .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+  .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+  .warning-box { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 4px; margin: 20px 0; color: #333; }
+  .footer-nav { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; }
+  .footer-nav a { color: #667eea; text-decoration: none; margin: 0 15px; font-size: 14px; }
+  .footer-nav a:hover { text-decoration: underline; }
+  .lang-switch { text-align: right; margin-bottom: 20px; }
+  .lang-switch a { color: #667eea; text-decoration: none; margin-left: 10px; font-size: 12px; font-weight: 600; }
+  .lang-switch a.active { color: #764ba2; }
+</style>
 </head>
 <body>
 <div class="container">
@@ -17,56 +45,146 @@
     <a href="../es/eliminar-cuenta.html">ES</a>
   </div>
 
-  <h1>Suppression de votre compte</h1>
-  <p class="meta">Conformément à l'article 17 du RGPD (droit à l'effacement)</p>
+  <h1>Supprimer votre compte</h1>
+  <p class="meta">Conformément à l'article 17 du RGPD (droit à l'oubli)</p>
 
   <div class="box">
-    <p>Vous pouvez demander la suppression définitive de votre compte et de toutes les données associées à tout moment, de deux façons :</p>
+    <p>Vous pouvez demander la suppression permanente de votre compte et de toutes les données associées à tout moment, de deux façons :</p>
   </div>
 
   <h2>Option 1 — Directement dans l'application</h2>
   <p>Ouvrez l'application → <strong>Paramètres</strong> → <strong>Compte</strong> → <strong>Supprimer mon compte</strong>. Cette méthode est immédiate et ne nécessite pas d'attendre un e-mail.</p>
 
   <h2>Option 2 — Via cette page (si vous n'avez plus accès à l'application)</h2>
-  <p>Saisissez l'adresse e-mail associée à votre compte. Vous recevrez un lien de confirmation valable 24 heures.</p>
+  <p>Entrez l'adresse e-mail associée à votre compte. Vous recevrez un lien de confirmation valide 24 heures.</p>
 
   <div class="box">
     <form id="delete-form">
       <label for="email">Adresse e-mail de votre compte :</label>
       <input type="email" id="email" name="email" placeholder="votre@email.com" required>
-      <input type="submit" value="Demander la suppression">
+      <button type="submit" id="submit-btn">Demander la suppression</button>
     </form>
-    <p style="font-size:13px; margin-top:12px;">
-      <span class="placeholder">[Note technique : ce formulaire doit être connecté à l'endpoint backend qui génère un token signé et envoie l'e-mail de confirmation via Supabase Auth — voir architecture définie avec l'équipe technique]</span>
-    </p>
+    <div id="status-message" style="display:none;"></div>
   </div>
 
-  <h2>Que se passe-t-il lors de la suppression ?</h2>
+  <h2>Que se passe-t-il lors de la suppression de votre compte ?</h2>
   <p>Après confirmation, les éléments suivants sont définitivement supprimés :</p>
   <ul>
-    <li>Votre compte et identifiant utilisateur</li>
-    <li>Toutes les histoires générées et sauvegardées</li>
-    <li>Vos favoris et préférences narratives</li>
+    <li>Votre compte et votre identifiant utilisateur</li>
+    <li>Toutes les histoires générées et enregistrées</li>
+    <li>Vos favoris et préférences de narration</li>
     <li>Vos fichiers audio générés</li>
-    <li>Vos informations d'abonnement (l'abonnement actif doit être annulé séparément via Google Play / App Store)</li>
+    <li>Vos informations d'abonnement (un abonnement actif doit être annulé séparément via Google Play / App Store)</li>
   </ul>
 
   <div class="warning-box">
-    ⚠️ Cette action est <strong>irréversible</strong>. Si vous avez un abonnement payant actif, pensez à l'annuler séparément depuis votre compte Google Play ou App Store — la suppression du compte n'annule pas automatiquement la facturation récurrente côté store.
+    ⚠️ Cette action est <strong>irréversible</strong>. Si vous avez un abonnement payant actif, n'oubliez pas de l'annuler séparément via votre compte Google Play ou App Store — la suppression du compte n'arrête pas automatiquement la facturation récurrente côté store.
   </div>
 
   <h2>Délai de traitement</h2>
-  <p>La suppression est effective immédiatement après confirmation du lien reçu par e-mail (ou immédiatement si effectuée depuis l'application).</p>
+  <p>La suppression prend effet immédiatement après la confirmation du lien reçu par e-mail (ou immédiatement si effectuée directement dans l'application).</p>
 
   <h2>Besoin d'aide ?</h2>
   <p>Contactez-nous à <a href="mailto:simplrlifeai@gmail.com">simplrlifeai@gmail.com</a> pour toute question.</p>
 
   <div class="footer-nav">
-    <a href="mentions-legales.html">Mentions Légales</a>
-    <a href="politique-confidentialite.html">Politique de Confidentialité</a>
+    <a href="../fr/mentions-legales.html">Mentions légales</a>
+    <a href="../fr/politique-confidentialite.html">Politique de confidentialité</a>
     <a href="../index.html">Accueil</a>
   </div>
 
 </div>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get('token');
+  const email = urlParams.get('email');
+
+  if (token && email) {
+    confirmDeletion(token, email);
+  }
+
+  document.getElementById('delete-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const userEmail = document.getElementById('email').value;
+    requestDeletion(userEmail);
+  });
+
+  async function requestDeletion(userEmail) {
+    const statusMsg = document.getElementById('status-message');
+    const submitBtn = document.getElementById('submit-btn');
+    
+    submitBtn.disabled = true;
+    statusMsg.style.display = 'block';
+    statusMsg.className = '';
+    statusMsg.textContent = '⏳ Envoi de la demande...';
+    
+    try {
+      const BACKEND_URL = 'http://localhost:8000';
+      const response = await fetch(`${BACKEND_URL}/api/account/request-deletion`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail })
+      });
+      
+      if (response.ok) {
+        statusMsg.className = 'success';
+        statusMsg.innerHTML = `
+          <strong>✅ Demande de suppression envoyée !</strong><br>
+          Consultez votre boîte de réception pour un lien de confirmation (valide 24 heures).<br>
+          Cliquez sur le lien pour supprimer définitivement votre compte.
+        `;
+        document.getElementById('email').value = '';
+      } else {
+        statusMsg.className = 'error';
+        statusMsg.textContent = '❌ Erreur : impossible d\'envoyer la demande. Veuillez réessayer plus tard.';
+      }
+    } catch (error) {
+      statusMsg.className = 'error';
+      statusMsg.textContent = '❌ Erreur : impossible d\'accéder au serveur. Veuillez vérifier votre connexion.';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  }
+
+  async function confirmDeletion(token, userEmail) {
+    const statusMsg = document.getElementById('status-message');
+    const form = document.getElementById('delete-form');
+    
+    statusMsg.style.display = 'block';
+    statusMsg.className = '';
+    statusMsg.textContent = '⏳ Traitement de la suppression...';
+    form.style.display = 'none';
+
+    try {
+      const BACKEND_URL = 'http://localhost:8000';
+      const response = await fetch(`${BACKEND_URL}/api/account/confirm-deletion?token=${encodeURIComponent(token)}&email=${encodeURIComponent(userEmail)}`);
+      
+      if (response.ok) {
+        const data = await response.json();
+        statusMsg.className = 'success';
+        statusMsg.innerHTML = `
+          <strong>✅ ${data.message}</strong><br>
+          Votre compte et toutes les données associées ont été supprimés de manière permanente.<br>
+          Vous pouvez maintenant désinstaller l'application en toute sécurité.
+        `;
+      } else {
+        statusMsg.className = 'error';
+        statusMsg.innerHTML = `
+          <strong>❌ Échec de la suppression</strong><br>
+          Le lien de confirmation a peut-être expiré (valide 24 heures).<br>
+          Veuillez demander un nouveau lien ou contacter le support.
+        `;
+      }
+    } catch (error) {
+      statusMsg.className = 'error';
+      statusMsg.innerHTML = `
+        <strong>❌ Erreur lors du traitement de la suppression</strong><br>
+        Veuillez vérifier votre connexion et réessayer.
+      `;
+    }
+  }
+</script>
+
 </body>
 </html>
