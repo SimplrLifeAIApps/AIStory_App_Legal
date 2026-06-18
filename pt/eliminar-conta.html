@@ -3,8 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eliminar Conta — [NOME DA APLICAÇÃO]</title>
-<link rel="stylesheet" href="../style.css">
+<title>Eliminar Conta — Alinara</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .container { background: white; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width: 600px; width: 100%; padding: 40px; }
+  h1 { color: #333; margin-bottom: 10px; font-size: 28px; }
+  .meta { color: #999; font-size: 14px; margin-bottom: 20px; }
+  .box { background: #f5f5f5; border-left: 4px solid #667eea; padding: 15px; margin: 20px 0; border-radius: 4px; }
+  h2 { color: #333; font-size: 18px; margin: 20px 0 10px 0; }
+  p { color: #555; line-height: 1.6; margin-bottom: 12px; }
+  ul { color: #555; margin: 10px 0 10px 20px; }
+  ul li { margin-bottom: 8px; }
+  form { display: flex; flex-direction: column; }
+  label { color: #333; font-weight: 600; margin-bottom: 8px; }
+  input[type="email"] { padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; margin-bottom: 15px; transition: border-color 0.3s; }
+  input[type="email"]:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+  button[type="submit"] { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 20px; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+  button[type="submit"]:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3); }
+  button[type="submit"]:disabled { opacity: 0.7; cursor: not-allowed; }
+  #status-message { margin-top: 15px; padding: 12px; border-radius: 4px; font-size: 14px; line-height: 1.5; }
+  .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+  .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+  .warning-box { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 4px; margin: 20px 0; color: #333; }
+  .footer-nav { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; }
+  .footer-nav a { color: #667eea; text-decoration: none; margin: 0 15px; font-size: 14px; }
+  .footer-nav a:hover { text-decoration: underline; }
+  .lang-switch { text-align: right; margin-bottom: 20px; }
+  .lang-switch a { color: #667eea; text-decoration: none; margin-left: 10px; font-size: 12px; font-weight: 600; }
+  .lang-switch a.active { color: #764ba2; }
+</style>
 </head>
 <body>
 <div class="container">
@@ -17,56 +45,146 @@
     <a href="../es/eliminar-cuenta.html">ES</a>
   </div>
 
-  <h1>Eliminar a Sua Conta</h1>
-  <p class="meta">Nos termos do Artigo 17.º do RGPD (direito ao apagamento)</p>
+  <h1>Eliminar sua Conta</h1>
+  <p class="meta">De acordo com o Artigo 17 LGPD (direito ao esquecimento)</p>
 
   <div class="box">
-    <p>Pode solicitar a eliminação definitiva da sua conta e de todos os dados associados em qualquer momento, de duas formas:</p>
+    <p>Você pode solicitar a exclusão permanente de sua conta e todos os dados associados a qualquer momento, de duas formas:</p>
   </div>
 
-  <h2>Opção 1 — Diretamente na aplicação</h2>
-  <p>Abra a aplicação → <strong>Definições</strong> → <strong>Conta</strong> → <strong>Eliminar a minha conta</strong>. Este método é imediato e não requer esperar por um email.</p>
+  <h2>Opção 1 — Diretamente no aplicativo</h2>
+  <p>Abra o aplicativo → <strong>Configurações</strong> → <strong>Conta</strong> → <strong>Excluir minha conta</strong>. Este método é imediato e não requer esperar por um e-mail.</p>
 
-  <h2>Opção 2 — Através desta página (caso já não tenha acesso à aplicação)</h2>
-  <p>Introduza o endereço de email associado à sua conta. Receberá um link de confirmação válido por 24 horas.</p>
+  <h2>Opção 2 — Via esta página (se você não tiver mais acesso ao aplicativo)</h2>
+  <p>Digite o endereço de e-mail associado à sua conta. Você receberá um link de confirmação válido por 24 horas.</p>
 
   <div class="box">
     <form id="delete-form">
-      <label for="email">Endereço de email da sua conta:</label>
+      <label for="email">Endereço de e-mail da sua conta:</label>
       <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-      <input type="submit" value="Solicitar Eliminação">
+      <button type="submit" id="submit-btn">Solicitar Exclusão</button>
     </form>
-    <p style="font-size:13px; margin-top:12px;">
-      <span class="placeholder">[Nota técnica: este formulário deve ser ligado ao endpoint backend que gera um token assinado e envia o email de confirmação via Supabase Auth]</span>
-    </p>
+    <div id="status-message" style="display:none;"></div>
   </div>
 
-  <h2>O Que Acontece Quando Elimina a Conta?</h2>
-  <p>Após confirmação, os seguintes elementos são eliminados permanentemente:</p>
+  <h2>O que acontece quando você exclui sua conta?</h2>
+  <p>Após a confirmação, o seguinte é permanentemente excluído:</p>
   <ul>
-    <li>A sua conta e identificador de utilizador</li>
-    <li>Todas as histórias geradas e guardadas</li>
-    <li>Os seus favoritos e preferências narrativas</li>
-    <li>Os seus ficheiros áudio gerados</li>
-    <li>As suas informações de subscrição (uma subscrição ativa deve ser cancelada separadamente através do Google Play / App Store)</li>
+    <li>Sua conta e identificador de usuário</li>
+    <li>Todas as histórias geradas e salvas</li>
+    <li>Seus favoritos e preferências de narração</li>
+    <li>Seus arquivos de áudio gerados</li>
+    <li>Suas informações de assinatura (uma assinatura ativa deve ser cancelada separadamente via Google Play / App Store)</li>
   </ul>
 
   <div class="warning-box">
-    ⚠️ Esta ação é <strong>irreversível</strong>. Se tiver uma subscrição paga ativa, lembre-se de a cancelar separadamente através da sua conta Google Play ou App Store — a eliminação da conta não interrompe automaticamente a faturação recorrente do lado da loja.
+    ⚠️ Esta ação é <strong>irreversível</strong>. Se você tiver uma assinatura paga ativa, lembre-se de cancelá-la separadamente através de sua conta Google Play ou App Store — a exclusão da conta não para automaticamente a cobrança recorrente no lado da loja.
   </div>
 
   <h2>Tempo de Processamento</h2>
-  <p>A eliminação tem efeito imediato após confirmação do link recebido por email (ou imediatamente, se realizada diretamente na aplicação).</p>
+  <p>A exclusão entra em vigor imediatamente após a confirmação do link recebido por e-mail (ou imediatamente se realizado diretamente no aplicativo).</p>
 
   <h2>Precisa de Ajuda?</h2>
-  <p>Contacte-nos em <a href="mailto:simplrlifeai@gmail.com">simplrlifeai@gmail.com</a> para qualquer questão.</p>
+  <p>Entre em contato conosco em <a href="mailto:simplrlifeai@gmail.com">simplrlifeai@gmail.com</a> para qualquer dúvida.</p>
 
   <div class="footer-nav">
-    <a href="aviso-legal.html">Aviso Legal</a>
-    <a href="politica-privacidade.html">Política de Privacidade</a>
+    <a href="../pt/aviso-legal.html">Aviso Legal</a>
+    <a href="../pt/politica-privacidade.html">Política de Privacidade</a>
     <a href="../index.html">Início</a>
   </div>
 
 </div>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get('token');
+  const email = urlParams.get('email');
+
+  if (token && email) {
+    confirmDeletion(token, email);
+  }
+
+  document.getElementById('delete-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const userEmail = document.getElementById('email').value;
+    requestDeletion(userEmail);
+  });
+
+  async function requestDeletion(userEmail) {
+    const statusMsg = document.getElementById('status-message');
+    const submitBtn = document.getElementById('submit-btn');
+    
+    submitBtn.disabled = true;
+    statusMsg.style.display = 'block';
+    statusMsg.className = '';
+    statusMsg.textContent = '⏳ Enviando solicitação...';
+    
+    try {
+      const BACKEND_URL = 'http://localhost:8000';
+      const response = await fetch(`${BACKEND_URL}/api/account/request-deletion`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail })
+      });
+      
+      if (response.ok) {
+        statusMsg.className = 'success';
+        statusMsg.innerHTML = `
+          <strong>✅ Solicitação de exclusão enviada!</strong><br>
+          Verifique sua caixa de entrada para um link de confirmação (válido por 24 horas).<br>
+          Clique no link para excluir permanentemente sua conta.
+        `;
+        document.getElementById('email').value = '';
+      } else {
+        statusMsg.className = 'error';
+        statusMsg.textContent = '❌ Erro: Não foi possível enviar a solicitação. Tente novamente mais tarde.';
+      }
+    } catch (error) {
+      statusMsg.className = 'error';
+      statusMsg.textContent = '❌ Erro: Não foi possível alcançar o servidor. Verifique sua conexão.';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  }
+
+  async function confirmDeletion(token, userEmail) {
+    const statusMsg = document.getElementById('status-message');
+    const form = document.getElementById('delete-form');
+    
+    statusMsg.style.display = 'block';
+    statusMsg.className = '';
+    statusMsg.textContent = '⏳ Processando exclusão...';
+    form.style.display = 'none';
+
+    try {
+      const BACKEND_URL = 'http://localhost:8000';
+      const response = await fetch(`${BACKEND_URL}/api/account/confirm-deletion?token=${encodeURIComponent(token)}&email=${encodeURIComponent(userEmail)}`);
+      
+      if (response.ok) {
+        const data = await response.json();
+        statusMsg.className = 'success';
+        statusMsg.innerHTML = `
+          <strong>✅ ${data.message}</strong><br>
+          Sua conta e todos os dados associados foram permanentemente excluídos.<br>
+          Você agora pode desinstalar o aplicativo com segurança.
+        `;
+      } else {
+        statusMsg.className = 'error';
+        statusMsg.innerHTML = `
+          <strong>❌ Falha na exclusão</strong><br>
+          O link de confirmação pode ter expirado (válido por 24 horas).<br>
+          Solicite um novo link ou entre em contato com o suporte.
+        `;
+      }
+    } catch (error) {
+      statusMsg.className = 'error';
+      statusMsg.innerHTML = `
+        <strong>❌ Erro ao processar exclusão</strong><br>
+        Verifique sua conexão e tente novamente.
+      `;
+    }
+  }
+</script>
+
 </body>
 </html>
