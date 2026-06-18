@@ -3,8 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Konto löschen — [APP NAME]</title>
-<link rel="stylesheet" href="../style.css">
+<title>Konto löschen — Alinara</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+  }
+
+  h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+  }
+
+  .meta {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .box {
+    background: #f5f5f5;
+    border-left: 4px solid #667eea;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+
+  h2 {
+    color: #333;
+    font-size: 18px;
+    margin: 20px 0 10px 0;
+  }
+
+  p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  ul {
+    color: #555;
+    margin: 10px 0 10px 20px;
+  }
+
+  ul li {
+    margin-bottom: 8px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  input[type="email"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+  }
+
+  input[type="email"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+
+  button[type="submit"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  button[type="submit"]:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+  }
+
+  button[type="submit"]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  #status-message {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  .error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+
+  .warning-box {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+    color: #333;
+  }
+
+  .footer-nav {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+  }
+
+  .footer-nav a {
+    color: #667eea;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+  }
+
+  .footer-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .lang-switch {
+    text-align: right;
+    margin-bottom: 20px;
+  }
+
+  .lang-switch a {
+    color: #667eea;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .lang-switch a.active {
+    color: #764ba2;
+  }
+</style>
 </head>
 <body>
 <div class="container">
@@ -17,56 +195,153 @@
     <a href="../es/eliminar-cuenta.html">ES</a>
   </div>
 
-  <h1>Ihr Konto löschen</h1>
-  <p class="meta">Gemäß Art. 17 DSGVO (Recht auf Löschung)</p>
+  <h1>Konto löschen</h1>
+  <p class="meta">Gemäß Artikel 17 DSGVO (Recht auf Vergessenwerden)</p>
 
   <div class="box">
-    <p>Sie können die endgültige Löschung Ihres Kontos und aller zugehörigen Daten jederzeit auf zwei Wegen beantragen:</p>
+    <p>Du kannst die permanente Löschung deines Kontos und aller zugehörigen Daten jederzeit auf zwei Wegen anfordern:</p>
   </div>
 
   <h2>Option 1 — Direkt in der App</h2>
-  <p>Öffnen Sie die App → <strong>Einstellungen</strong> → <strong>Konto</strong> → <strong>Konto löschen</strong>. Diese Methode ist sofort wirksam und erfordert kein Warten auf eine E-Mail.</p>
+  <p>Öffne die App → <strong>Einstellungen</strong> → <strong>Konto</strong> → <strong>Mein Konto löschen</strong>. Diese Methode ist sofort wirksam und erfordert kein Email-Warten.</p>
 
-  <h2>Option 2 — Über diese Seite (falls kein Zugriff mehr auf die App besteht)</h2>
-  <p>Geben Sie die mit Ihrem Konto verknüpfte E-Mail-Adresse ein. Sie erhalten einen Bestätigungslink, der 24 Stunden gültig ist.</p>
+  <h2>Option 2 — Über diese Seite (wenn du keinen App-Zugriff mehr hast)</h2>
+  <p>Gib die E-Mail-Adresse deines Kontos ein. Du erhältst einen Bestätigungslink, der 24 Stunden gültig ist.</p>
 
   <div class="box">
     <form id="delete-form">
-      <label for="email">E-Mail-Adresse Ihres Kontos:</label>
-      <input type="email" id="email" name="email" placeholder="ihre@email.com" required>
-      <input type="submit" value="Löschung beantragen">
+      <label for="email">E-Mail-Adresse deines Kontos:</label>
+      <input type="email" id="email" name="email" placeholder="deine@email.com" required>
+      <button type="submit" id="submit-btn">Löschung anfordern</button>
     </form>
-    <p style="font-size:13px; margin-top:12px;">
-      <span class="placeholder">[Technischer Hinweis: Dieses Formular muss mit dem Backend-Endpoint verbunden werden, der ein signiertes Token erstellt und die Bestätigungs-E-Mail über Supabase Auth versendet]</span>
-    </p>
+    <div id="status-message" style="display:none;"></div>
   </div>
 
-  <h2>Was passiert bei der Löschung?</h2>
-  <p>Nach Bestätigung werden folgende Daten endgültig gelöscht:</p>
+  <h2>Was passiert beim Löschen deines Kontos?</h2>
+  <p>Nach der Bestätigung werden folgende Daten permanent gelöscht:</p>
   <ul>
-    <li>Ihr Konto und Ihre Nutzer-ID</li>
+    <li>Dein Konto und deine Benutzer-ID</li>
     <li>Alle generierten und gespeicherten Geschichten</li>
-    <li>Ihre Favoriten und narrativen Präferenzen</li>
-    <li>Ihre generierten Audiodateien</li>
-    <li>Ihre Abonnementinformationen (ein aktives Abonnement muss separat über Google Play / App Store gekündigt werden)</li>
+    <li>Deine Favoriten und Erzählpräferenzen</li>
+    <li>Deine generierten Audiodateien</li>
+    <li>Deine Abonnementinformationen (aktive Abos müssen separat über Google Play / App Store gekündigt werden)</li>
   </ul>
 
   <div class="warning-box">
-    ⚠️ Diese Aktion ist <strong>unwiderruflich</strong>. Falls Sie ein aktives kostenpflichtiges Abonnement haben, denken Sie daran, dieses separat über Ihr Google Play- oder App-Store-Konto zu kündigen — die Kontolöschung beendet nicht automatisch die wiederkehrende Abrechnung beim Store.
+    ⚠️ Diese Aktion ist <strong>nicht rückgängig zu machen</strong>. Wenn du ein aktives bezahltes Abonnement hast, vergiss nicht, es separat über dein Google Play oder App Store Konto zu kündigen — das Löschen des Kontos stoppt die wiederkehrende Abrechnung auf der Store-Seite nicht automatisch.
   </div>
 
-  <h2>Bearbeitungsdauer</h2>
-  <p>Die Löschung erfolgt unmittelbar nach Bestätigung des per E-Mail erhaltenen Links (oder sofort, wenn direkt in der App durchgeführt).</p>
+  <h2>Verarbeitungszeit</h2>
+  <p>Die Löschung wird unmittelbar nach Bestätigung des per E-Mail erhaltenen Links wirksam (oder sofort, wenn es direkt in der App durchgeführt wird).</p>
 
-  <h2>Benötigen Sie Hilfe?</h2>
-  <p>Kontaktieren Sie uns unter <a href="mailto:simplrlifeai@gmail.com">simplrlifeai@gmail.com</a> bei Fragen.</p>
+  <h2>Benötigst du Hilfe?</h2>
+  <p>Kontaktiere uns unter <a href="mailto:simplrlifeai@gmail.com">simplrlifeai@gmail.com</a> bei Fragen.</p>
 
   <div class="footer-nav">
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutzerklaerung.html">Datenschutzerklärung</a>
+    <a href="../de/impressum.html">Impressum</a>
+    <a href="../de/datenschutzerklaerung.html">Datenschutz</a>
     <a href="../index.html">Startseite</a>
   </div>
 
 </div>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get('token');
+  const email = urlParams.get('email');
+
+  if (token && email) {
+    confirmDeletion(token, email);
+  }
+
+  document.getElementById('delete-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const userEmail = document.getElementById('email').value;
+    requestDeletion(userEmail);
+  });
+
+  async function requestDeletion(userEmail) {
+    const statusMsg = document.getElementById('status-message');
+    const submitBtn = document.getElementById('submit-btn');
+    
+    submitBtn.disabled = true;
+    statusMsg.style.display = 'block';
+    statusMsg.className = '';
+    statusMsg.textContent = '⏳ Anfrage wird gesendet...';
+    
+    try {
+      const BACKEND_URL = 'http://localhost:8000';
+      
+      const response = await fetch(`${BACKEND_URL}/api/account/request-deletion`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: userEmail })
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        statusMsg.className = 'success';
+        statusMsg.innerHTML = `
+          <strong>✅ Löschanfrage gesendet!</strong><br>
+          Überprüfe deinen E-Mail-Postfach auf einen Bestätigungslink (24 Stunden gültig).<br>
+          Klicke auf den Link, um dein Konto permanent zu löschen.
+        `;
+        document.getElementById('email').value = '';
+      } else {
+        statusMsg.className = 'error';
+        statusMsg.textContent = '❌ Fehler: Löschanfrage konnte nicht gesendet werden. Bitte versuche es später erneut.';
+      }
+    } catch (error) {
+      statusMsg.className = 'error';
+      statusMsg.textContent = '❌ Fehler: Server konnte nicht erreicht werden. Bitte überprüfe deine Verbindung.';
+      console.error('Error:', error);
+    } finally {
+      submitBtn.disabled = false;
+    }
+  }
+
+  async function confirmDeletion(token, userEmail) {
+    const statusMsg = document.getElementById('status-message');
+    const form = document.getElementById('delete-form');
+    
+    statusMsg.style.display = 'block';
+    statusMsg.className = '';
+    statusMsg.textContent = '⏳ Löschung wird verarbeitet...';
+    form.style.display = 'none';
+
+    try {
+      const BACKEND_URL = 'http://localhost:8000';
+      
+      const response = await fetch(`${BACKEND_URL}/api/account/confirm-deletion?token=${encodeURIComponent(token)}&email=${encodeURIComponent(userEmail)}`);
+      
+      if (response.ok) {
+        const data = await response.json();
+        statusMsg.className = 'success';
+        statusMsg.innerHTML = `
+          <strong>✅ ${data.message}</strong><br>
+          Dein Konto und alle zugehörigen Daten wurden permanent gelöscht.<br>
+          Du kannst die App jetzt sicher deinstallieren.
+        `;
+      } else {
+        statusMsg.className = 'error';
+        statusMsg.innerHTML = `
+          <strong>❌ Löschung fehlgeschlagen</strong><br>
+          Der Bestätigungslink ist möglicherweise abgelaufen (24 Stunden gültig).<br>
+          Bitte fordere einen neuen Löschungslink an oder kontaktiere den Support.
+        `;
+      }
+    } catch (error) {
+      statusMsg.className = 'error';
+      statusMsg.innerHTML = `
+        <strong>❌ Fehler beim Verarbeiten der Löschung</strong><br>
+        Bitte überprüfe deine Verbindung und versuche es erneut.
+      `;
+      console.error('Error:', error);
+    }
+  }
+</script>
+
 </body>
 </html>
